@@ -2,7 +2,7 @@
 <html lang="zh-TW" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>樊式壓力檢測量表 | 線上自評與常模分析系統</title>
   <meta name="description" content="專業線上樊式壓力檢測量表，提供生理特質、認知反應、情緒狀態、行為表現四大向度之分析與百分等級常模對照。">
   
@@ -14,7 +14,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- External Libraries via CDN for direct browser compatibility -->
+  <!-- External Libraries via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
@@ -38,10 +38,10 @@
         
         <div class="header-actions">
           <button id="btn-fill-demo" class="btn btn-secondary btn-sm" title="載入範例數據以利快速測試報告">
-            <i data-lucide="sparkles"></i> 填入測試數據
+            <i data-lucide="sparkles"></i> <span class="btn-text-hide-mobile">測試數據</span>
           </button>
           <button id="btn-clear" class="btn btn-ghost btn-sm" title="清空所有回答">
-            <i data-lucide="rotate-ccw"></i> 重置
+            <i data-lucide="rotate-ccw"></i> <span class="btn-text-hide-mobile">重置</span>
           </button>
           <button id="btn-toggle-theme" class="btn btn-icon" title="切換深色/淺色主題">
             <i data-lucide="moon" id="icon-theme"></i>
@@ -60,7 +60,7 @@
             <i data-lucide="calendar" class="info-icon"></i>
             <div>
               <h3>填答說明</h3>
-              <p>請試著回想自己<strong>最近一個月</strong>所感受到的狀況，依照此狀況填寫下列題目。請勾選最符合您實際感受的描述。</p>
+              <p>請試著回想自己<strong>最近一個月</strong>所感受到的狀況，依照此狀況填寫下列題目。</p>
             </div>
           </div>
 
@@ -75,18 +75,18 @@
         <!-- Filter & View Controls -->
         <div class="filter-bar">
           <div class="category-tabs" id="category-tabs">
-            <button class="tab-btn active" data-category="ALL">全部題目 (21)</button>
+            <button class="tab-btn active" data-category="ALL">全部 (21)</button>
             <button class="tab-btn" data-category="A">
-              <span class="cat-dot dot-a"></span> A. 生理特質 (6)
+              <span class="cat-dot dot-a"></span> A. 生理 (6)
             </button>
             <button class="tab-btn" data-category="B">
-              <span class="cat-dot dot-b"></span> B. 認知反應 (7)
+              <span class="cat-dot dot-b"></span> B. 認知 (7)
             </button>
             <button class="tab-btn" data-category="C">
-              <span class="cat-dot dot-c"></span> C. 情緒狀態 (4)
+              <span class="cat-dot dot-c"></span> C. 情緒 (4)
             </button>
             <button class="tab-btn" data-category="D">
-              <span class="cat-dot dot-d"></span> D. 行為表現 (4)
+              <span class="cat-dot dot-d"></span> D. 行為 (4)
             </button>
           </div>
         </div>
@@ -101,7 +101,7 @@
       <section id="report-section" class="section-container hidden">
         <div class="report-header-banner">
           <button id="btn-back-to-test" class="btn btn-ghost btn-sm">
-            <i data-lucide="arrow-left"></i> 返回修改填答
+            <i data-lucide="arrow-left"></i> 返回修改
           </button>
           <div class="report-title-group">
             <h2>個人壓力綜合診斷報告</h2>
@@ -109,13 +109,13 @@
           </div>
           <div class="report-actions">
             <button id="btn-copy-summary" class="btn btn-secondary btn-sm">
-              <i data-lucide="copy"></i> 複製文字摘要
+              <i data-lucide="copy"></i> <span class="btn-text-hide-mobile">複製摘要</span>
             </button>
             <button id="btn-download-pdf" class="btn btn-primary btn-sm">
-              <i data-lucide="download"></i> 下載 PDF 報告
+              <i data-lucide="download"></i> 下載 PDF
             </button>
             <button id="btn-print" class="btn btn-ghost btn-sm" title="列印報告">
-              <i data-lucide="printer"></i> 列印
+              <i data-lucide="printer"></i>
             </button>
           </div>
         </div>
@@ -216,7 +216,7 @@
       <div class="footer-content">
         <div class="progress-info">
           <div class="progress-text-row">
-            <span>已完成填答：<strong id="answered-count">0</strong> / 21 題</span>
+            <span>已答：<strong id="answered-count">0</strong> / 21 題</span>
             <span id="progress-percent" class="percent-tag">0%</span>
           </div>
           <div class="progress-bar-track">
@@ -228,7 +228,7 @@
             <i data-lucide="chevron-up"></i>
           </button>
           <button id="btn-submit" class="btn btn-primary btn-lg" disabled>
-            <i data-lucide="check-circle-2"></i> 查看診斷報告
+            <i data-lucide="check-circle-2"></i> 查看報告
           </button>
         </div>
       </div>
