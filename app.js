@@ -222,8 +222,8 @@ function renderQuestions() {
                 class="option-btn ${isSelected ? 'selected' : ''}" 
                 data-qid="${q.id}" 
                 data-val="${opt.value}">
-          <span class="option-val">${opt.value} 分</span>
-          <span class="option-label">${opt.label}</span>
+          <span class="option-val-pill">${opt.value} 分</span>
+          <span class="option-label-text">${opt.label}</span>
         </button>
       `;
     });

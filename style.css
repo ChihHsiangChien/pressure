@@ -1,5 +1,5 @@
 /* ==========================================================================
-   樊式壓力檢測量表 (Fan's Stress Self-Rating Scale) - Enhanced Font Size CSS
+   樊式壓力檢測量表 (Fan's Stress Self-Rating Scale) - 2-Column Extra Large Font CSS
    ========================================================================== */
 
 :root {
@@ -12,7 +12,7 @@
   --glass-glow: rgba(99, 102, 241, 0.15);
 
   --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1; /* Brighter secondary text for high contrast */
+  --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
 
   --accent-primary: #6366f1; /* Indigo */
@@ -25,9 +25,9 @@
   --color-cat-c: #8b5cf6; /* Violet - Emotional */
   --color-cat-d: #10b981; /* Emerald - Behavioral */
 
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
   --radius-full: 9999px;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -66,7 +66,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px; /* Base size */
+  font-size: 16px;
 }
 
 body {
@@ -79,7 +79,7 @@ body {
     radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
     radial-gradient(circle at 85% 75%, rgba(244, 63, 94, 0.08) 0%, transparent 45%);
   background-attachment: fixed;
-  padding-bottom: calc(120px + env(safe-area-inset-bottom));
+  padding-bottom: calc(130px + env(safe-area-inset-bottom));
 }
 
 .app-container {
@@ -131,8 +131,8 @@ body {
 }
 
 .brand-title {
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.65rem;
+  font-weight: 800;
   letter-spacing: -0.01em;
   background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
   -webkit-background-clip: text;
@@ -180,7 +180,7 @@ body {
 
 .btn-lg {
   padding: 14px 26px;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: var(--radius-md);
   min-height: 52px;
@@ -245,14 +245,14 @@ body {
 }
 
 .instruction-header h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .instruction-header p {
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
 }
 
 .options-legend {
@@ -264,7 +264,7 @@ body {
 }
 
 .legend-item {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   display: flex;
   align-items: center;
@@ -276,9 +276,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -287,10 +287,10 @@ body {
 .badge-2 { background: rgba(245, 158, 11, 0.25); color: #fde047; }
 .badge-3 { background: rgba(239, 68, 68, 0.25); color: #fca5a5; }
 
-.badge-danger { background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 0.95rem; padding: 4px 12px; }
-.badge-warning { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); font-size: 0.95rem; padding: 4px 12px; }
-.badge-info { background: rgba(59, 130, 246, 0.25); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); font-size: 0.95rem; padding: 4px 12px; }
-.badge-success { background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-size: 0.95rem; padding: 4px 12px; }
+.badge-danger { background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 1rem; padding: 6px 14px; }
+.badge-warning { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); font-size: 1rem; padding: 6px 14px; }
+.badge-info { background: rgba(59, 130, 246, 0.25); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); font-size: 1rem; padding: 6px 14px; }
+.badge-success { background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-size: 1rem; padding: 6px 14px; }
 
 /* Filter Bar */
 .filter-bar {
@@ -311,14 +311,14 @@ body {
 }
 
 .tab-btn {
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: var(--radius-full);
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   color: var(--text-secondary);
   font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
   transition: all var(--transition-fast);
@@ -326,7 +326,7 @@ body {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-  min-height: 42px;
+  min-height: 44px;
 }
 
 .tab-btn:active {
@@ -354,18 +354,18 @@ body {
 .questions-grid {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 .question-card {
-  padding: 22px 24px;
+  padding: 24px 26px;
   transition: transform var(--transition-fast), border-color var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
 
 .question-card.answered {
-  border-left: 5px solid var(--accent-primary);
+  border-left: 6px solid var(--accent-primary);
 }
 
 .question-header {
@@ -376,15 +376,15 @@ body {
 }
 
 .question-num {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   color: var(--text-muted);
 }
 
 .question-cat-tag {
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -394,78 +394,100 @@ body {
 .cat-tag-d { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; }
 
 .question-text {
-  font-size: 1.15rem; /* Comfortably larger font for question statement */
-  font-weight: 600;
+  font-size: 1.25rem; /* Large, crisp question text */
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   line-height: 1.6;
 }
 
-/* Rating Option Buttons - ENHANCED LARGER FONT & TAP TARGETS */
+/* ==========================================================================
+   2 COLUMNS PER ROW (2x2 GRID) OPTION BUTTONS WITH EXTRA LARGE TEXT
+   ========================================================================== */
 .options-group {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr); /* 2 Columns per row */
+  gap: 14px;
 }
 
 .option-btn {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding: 12px 8px;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
   border-radius: var(--radius-sm);
   background: var(--bg-tertiary);
   border: 2px solid transparent;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   user-select: none;
-  min-height: 60px;
+  min-height: 64px;
 }
 
 .option-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
 
-.option-val {
-  font-size: 1.25rem; /* Larger bold points */
+.option-val-pill {
+  font-size: 1.15rem;
   font-weight: 800;
-  line-height: 1.2;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-.option-label {
-  font-size: 0.95rem; /* Comfortably readable option description */
-  font-weight: 600;
-  margin-top: 2px;
+.option-label-text {
+  font-size: 1.25rem; /* EXTRA LARGE readable option text */
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
 }
 
+/* Option Selected Styles */
 .option-btn[data-val="0"].selected {
   background: rgba(100, 116, 139, 0.35);
   border-color: #94a3b8;
+  box-shadow: 0 0 16px rgba(100, 116, 139, 0.4);
+}
+.option-btn[data-val="0"].selected .option-val-pill {
+  background: #64748b;
   color: #ffffff;
-  box-shadow: 0 0 14px rgba(100, 116, 139, 0.4);
 }
 
 .option-btn[data-val="1"].selected {
   background: rgba(59, 130, 246, 0.35);
   border-color: #60a5fa;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+}
+.option-btn[data-val="1"].selected .option-val-pill {
+  background: #3b82f6;
   color: #ffffff;
-  box-shadow: 0 0 14px rgba(59, 130, 246, 0.4);
 }
 
 .option-btn[data-val="2"].selected {
   background: rgba(245, 158, 11, 0.35);
   border-color: #fbbf24;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
+}
+.option-btn[data-val="2"].selected .option-val-pill {
+  background: #f59e0b;
   color: #ffffff;
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
 }
 
 .option-btn[data-val="3"].selected {
   background: rgba(239, 68, 68, 0.35);
   border-color: #f87171;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
+}
+.option-btn[data-val="3"].selected .option-val-pill {
+  background: #ef4444;
   color: #ffffff;
-  box-shadow: 0 0 14px rgba(239, 68, 68, 0.4);
 }
 
 /* Sticky Bottom Footer */
@@ -495,15 +517,15 @@ body {
 .progress-text-row {
   display: flex;
   justify-content: space-between;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text-secondary);
   margin-bottom: 6px;
 }
 
 .percent-tag {
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--accent-primary);
 }
 
@@ -545,12 +567,12 @@ body {
 }
 
 .report-title-group h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: 800;
 }
 
 .report-title-group p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
 }
 
@@ -601,14 +623,14 @@ body {
 }
 
 .total-score-val {
-  font-size: 2.6rem;
+  font-size: 2.7rem;
   font-weight: 800;
   line-height: 1;
   color: var(--text-primary);
 }
 
 .total-score-max {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
@@ -622,7 +644,7 @@ body {
 }
 
 .pr-label {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   display: block;
   margin-bottom: 4px;
@@ -631,44 +653,44 @@ body {
 .pr-value-tag {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .pr-number {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: var(--accent-primary);
 }
 
 .stress-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
   margin-bottom: 8px;
 }
 
 .stress-summary-text {
   color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 14px;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
 }
 
 .recommendation-box {
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--card-border);
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 1rem;
-  line-height: 1.6;
+  gap: 12px;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--text-primary);
 }
 
 .recommendation-box svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   color: var(--accent-primary);
   flex-shrink: 0;
   margin-top: 2px;
@@ -691,7 +713,7 @@ body {
 }
 
 .card-header h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -699,7 +721,7 @@ body {
 }
 
 .card-header .subtitle {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
@@ -714,7 +736,7 @@ body {
 }
 
 .section-title-bar h3 {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -744,12 +766,12 @@ body {
 }
 
 .dim-title-group h4 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 
 .dim-subtitle {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
@@ -758,13 +780,13 @@ body {
 }
 
 .dim-score-val {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 800;
   color: var(--dim-color);
 }
 
 .dim-score-max {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
 }
 
@@ -772,7 +794,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -799,12 +821,12 @@ body {
 
 .dim-advice-box {
   background: rgba(255, 255, 255, 0.04);
-  padding: 14px 16px;
+  padding: 16px 18px;
   border-radius: var(--radius-sm);
   border-left: 4px solid var(--dim-color);
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .margin-top-lg {
@@ -826,12 +848,12 @@ body {
   width: 100%;
   min-width: 620px;
   border-collapse: collapse;
-  font-size: 0.95rem; /* Clear legible numbers */
+  font-size: 1rem;
   text-align: center;
 }
 
 .norm-table th, .norm-table td {
-  padding: 8px 10px;
+  padding: 8px 12px;
   border: 1px solid var(--card-border);
 }
 
@@ -861,12 +883,10 @@ body {
   box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
 }
 
-/* ==========================================================================
-   MOBILE RESPONSIVE FONT BREAKPOINTS (< 640px)
-   ========================================================================== */
+/* Mobile Breakpoints (< 640px) */
 @media (max-width: 640px) {
   html {
-    font-size: 15px; /* Comfortable mobile base scale */
+    font-size: 15px;
   }
 
   .app-container {
@@ -879,7 +899,7 @@ body {
   }
 
   .brand-title {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
   }
 
   .brand-subtitle {
@@ -899,26 +919,29 @@ body {
   }
 
   .question-text {
-    font-size: 1.15rem; /* Clear, large question text on phones */
+    font-size: 1.2rem;
     line-height: 1.55;
   }
 
+  /* 2 Columns on Mobile with spacious padding */
   .options-group {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
   .option-btn {
-    min-height: 56px;
-    padding: 10px 6px;
+    padding: 12px 10px;
+    min-height: 60px;
+    gap: 10px;
   }
 
-  .option-val {
+  .option-val-pill {
+    font-size: 1rem;
+    padding: 4px 10px;
+  }
+
+  .option-label-text {
     font-size: 1.15rem;
-  }
-
-  .option-label {
-    font-size: 0.9rem;
   }
 
   .charts-grid, .dimensions-grid {
@@ -944,7 +967,7 @@ body {
 
   .recommendation-box {
     text-align: left;
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .sticky-footer {
@@ -953,7 +976,7 @@ body {
 
   .btn-lg {
     padding: 12px 18px;
-    font-size: 1rem;
+    font-size: 1.05rem;
     min-height: 48px;
   }
 }

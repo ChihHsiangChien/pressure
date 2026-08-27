@@ -70,8 +70,8 @@ function renderQuestions() {
                 class="option-btn ${isSelected ? 'selected' : ''}" 
                 data-qid="${q.id}" 
                 data-val="${opt.value}">
-          <span class="option-val">${opt.value} 分</span>
-          <span class="option-label">${opt.label}</span>
+          <span class="option-val-pill">${opt.value} 分</span>
+          <span class="option-label-text">${opt.label}</span>
         </button>
       `;
     });
@@ -92,7 +92,7 @@ function renderQuestions() {
 
   // Attach event listeners for option buttons
   container.querySelectorAll('.option-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
       const qid = parseInt(btn.dataset.qid);
       const val = parseInt(btn.dataset.val);
       selectOption(qid, val);
@@ -191,7 +191,6 @@ function setupEventListeners() {
 
 // Preset Demo Fill
 function fillDemoAnswers() {
-  // Realistic moderate-to-high stress profile sample
   const demoVals = [2, 1, 2, 1, 0, 1, 2, 3, 2, 2, 1, 1, 2, 2, 3, 2, 1, 2, 3, 2, 1];
   QUESTIONS.forEach((q, idx) => {
     state.answers[q.id] = demoVals[idx];
@@ -241,17 +240,14 @@ function calculateResults() {
 function generateReport() {
   const results = calculateResults();
 
-  // Hide test, show report
   document.getElementById('questionnaire-section').classList.add('hidden');
   document.getElementById('sticky-footer').classList.add('hidden');
   document.getElementById('report-section').classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Update Header Banner
   const now = new Date();
   document.getElementById('report-timestamp').textContent = `檢測時間：${now.toLocaleString('zh-TW')}`;
 
-  // Update Hero Card
   document.getElementById('res-total-score').textContent = results.rawScores.T;
   document.getElementById('res-total-pr').textContent = `PR ${results.percentileRanks.T}`;
   
@@ -263,16 +259,10 @@ function generateReport() {
   document.getElementById('res-stress-summary').textContent = results.levelInfo.summary;
   document.getElementById('res-stress-recommendation-text').textContent = results.levelInfo.recommendation;
 
-  // Render Charts
   renderCharts(results);
-
-  // Render Subscale Detailed Grid
   renderDimensionsGrid(results);
-
-  // Render Norm Profile Table Matrix
   renderNormMatrixTable(results);
 
-  // Trigger celebration confetti
   confetti({
     particleCount: 80,
     spread: 70,
@@ -377,8 +367,7 @@ function renderCharts(results) {
           min: 0,
           max: 100,
           ticks: { color: textColor },
-          grid: { color: gridColor },
-          title: { display: true, text: '百分等級 (PR)', color: textColor }
+          grid: { color: gridColor }
         },
         x: {
           ticks: { color: textColor },
@@ -440,7 +429,7 @@ function renderDimensionsGrid(results) {
   });
 }
 
-// Render Norm Profile Table Matrix (PDF Page 2 Table)
+// Render Norm Profile Table Matrix
 function renderNormMatrixTable(results) {
   const tbody = document.getElementById('norm-table-tbody');
   tbody.innerHTML = '';
