@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>樊式壓力檢測量表 | 線上自評與常模分析系統</title>
+  <meta name="description" content="專業線上樊式壓力檢測量表，提供生理特質、認知反應、情緒狀態、行為表現四大向度之分析與百分等級常模對照。">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- External Libraries via CDN for direct browser compatibility -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div id="app" class="app-container">
+    <!-- Header -->
+    <header class="site-header glass-card">
+      <div class="header-content">
+        <div class="brand">
+          <div class="brand-icon">
+            <i data-lucide="activity"></i>
+          </div>
+          <div>
+            <h1 class="brand-title">樊式壓力檢測量表</h1>
+            <p class="brand-subtitle">Fan's Stress Self-Rating Scale • 線上檢測與百分等級常模分析</p>
+          </div>
+        </div>
+        
+        <div class="header-actions">
+          <button id="btn-fill-demo" class="btn btn-secondary btn-sm" title="載入範例數據以利快速測試報告">
+            <i data-lucide="sparkles"></i> 填入測試數據
+          </button>
+          <button id="btn-clear" class="btn btn-ghost btn-sm" title="清空所有回答">
+            <i data-lucide="rotate-ccw"></i> 重置
+          </button>
+          <button id="btn-toggle-theme" class="btn btn-icon" title="切換深色/淺色主題">
+            <i data-lucide="moon" id="icon-theme"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Questionnaire View -->
+      <section id="questionnaire-section" class="section-container">
+        <!-- Instruction Card -->
+        <div class="instruction-card glass-card">
+          <div class="instruction-header">
+            <i data-lucide="calendar" class="info-icon"></i>
+            <div>
+              <h3>填答說明</h3>
+              <p>請試著回想自己<strong>最近一個月</strong>所感受到的狀況，依照此狀況填寫下列題目。請勾選最符合您實際感受的描述。</p>
+            </div>
+          </div>
+
+          <div class="options-legend">
+            <span class="legend-item"><strong class="badge badge-0">0 分</strong> 不符合</span>
+            <span class="legend-item"><strong class="badge badge-1">1 分</strong> 有一點符合</span>
+            <span class="legend-item"><strong class="badge badge-2">2 分</strong> 有一半符合</span>
+            <span class="legend-item"><strong class="badge badge-3">3 分</strong> 完全符合</span>
+          </div>
+        </div>
+
+        <!-- Filter & View Controls -->
+        <div class="filter-bar">
+          <div class="category-tabs" id="category-tabs">
+            <button class="tab-btn active" data-category="ALL">全部題目 (21)</button>
+            <button class="tab-btn" data-category="A">
+              <span class="cat-dot dot-a"></span> A. 生理特質 (6)
+            </button>
+            <button class="tab-btn" data-category="B">
+              <span class="cat-dot dot-b"></span> B. 認知反應 (7)
+            </button>
+            <button class="tab-btn" data-category="C">
+              <span class="cat-dot dot-c"></span> C. 情緒狀態 (4)
+            </button>
+            <button class="tab-btn" data-category="D">
+              <span class="cat-dot dot-d"></span> D. 行為表現 (4)
+            </button>
+          </div>
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="questions-list" class="questions-grid">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </section>
+
+      <!-- Diagnostic Report Section (Hidden until submitted) -->
+      <section id="report-section" class="section-container hidden">
+        <div class="report-header-banner">
+          <button id="btn-back-to-test" class="btn btn-ghost btn-sm">
+            <i data-lucide="arrow-left"></i> 返回修改填答
+          </button>
+          <div class="report-title-group">
+            <h2>個人壓力綜合診斷報告</h2>
+            <p id="report-timestamp">檢測時間：--</p>
+          </div>
+          <div class="report-actions">
+            <button id="btn-copy-summary" class="btn btn-secondary btn-sm">
+              <i data-lucide="copy"></i> 複製文字摘要
+            </button>
+            <button id="btn-download-pdf" class="btn btn-primary btn-sm">
+              <i data-lucide="download"></i> 下載 PDF 報告
+            </button>
+            <button id="btn-print" class="btn btn-ghost btn-sm" title="列印報告">
+              <i data-lucide="printer"></i> 列印
+            </button>
+          </div>
+        </div>
+
+        <!-- Printable Report Area -->
+        <div id="printable-report" class="report-body">
+          <!-- Overall Hero Card -->
+          <div class="overall-hero-card glass-card" id="overall-hero">
+            <div class="hero-main">
+              <div class="score-ring-container">
+                <div class="score-ring">
+                  <div class="score-ring-inner">
+                    <span class="total-score-val" id="res-total-score">0</span>
+                    <span class="total-score-max">/ 63 分</span>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-info">
+                <div class="pr-badge-wrapper">
+                  <span class="pr-label">總量表百分等級 (Percentile Rank)</span>
+                  <div class="pr-value-tag">
+                    <span class="pr-number" id="res-total-pr">PR --</span>
+                    <span id="res-stress-badge" class="badge">--</span>
+                  </div>
+                </div>
+                <h3 id="res-stress-level-title" class="stress-title">--</h3>
+                <p id="res-stress-summary" class="stress-summary-text">--</p>
+                <div class="recommendation-box" id="res-stress-recommendation">
+                  <i data-lucide="shield-alert"></i>
+                  <span id="res-stress-recommendation-text">--</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Grid -->
+          <div class="charts-grid">
+            <div class="chart-card glass-card">
+              <div class="card-header">
+                <h3><i data-lucide="radar"></i> 四大向度壓力雷達圖</h3>
+                <span class="subtitle">呈現各向度百分等級 (PR) 集中分布</span>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="radarChart"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-card glass-card">
+              <div class="card-header">
+                <h3><i data-lucide="bar-chart-3"></i> 百分等級常模比較圖 (PR Scale)</h3>
+                <span class="subtitle">對照常模界線 (PR 25 低壓, PR 75 高壓)</span>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="barChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dimensions Detailed Breakdown Grid -->
+          <div class="section-title-bar">
+            <h3><i data-lucide="layers"></i> 四大向度深度剖析與抒解建議</h3>
+          </div>
+          <div class="dimensions-grid" id="dimensions-detail-container">
+            <!-- Dynamically generated via app.js -->
+          </div>
+
+          <!-- Interactive Norm Profile Table Matrix -->
+          <div class="norm-matrix-card glass-card margin-top-lg">
+            <div class="card-header">
+              <h3><i data-lucide="table"></i> 樊式壓力檢測量表百分等級常模側面圖 (PDF 第2頁常模對照)</h3>
+              <p class="subtitle">表中高亮點為您的得分對應之百分等級 (下劃線數值 8, 12, 5, 30 代表 PR 75 警戒線；2, 4, 2, 1, 11 代表 PR 25 界線)</p>
+            </div>
+            <div class="table-responsive">
+              <table class="norm-table" id="norm-table-matrix">
+                <thead>
+                  <tr>
+                    <th>原始分數百分等級</th>
+                    <th class="col-a">生理特質 A( )</th>
+                    <th class="col-b">認知反應 B( )</th>
+                    <th class="col-c">情緒狀態 C( )</th>
+                    <th class="col-d">行為表現 D( )</th>
+                    <th class="col-t">總量表 T( )</th>
+                    <th>原始分數百分等級</th>
+                  </tr>
+                </thead>
+                <tbody id="norm-table-tbody">
+                  <!-- Dynamically rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating Sticky Progress Footer -->
+    <footer id="sticky-footer" class="sticky-footer glass-card">
+      <div class="footer-content">
+        <div class="progress-info">
+          <div class="progress-text-row">
+            <span>已完成填答：<strong id="answered-count">0</strong> / 21 題</span>
+            <span id="progress-percent" class="percent-tag">0%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="footer-actions">
+          <button id="btn-scroll-top" class="btn btn-ghost btn-sm" title="回到頂部">
+            <i data-lucide="chevron-up"></i>
+          </button>
+          <button id="btn-submit" class="btn btn-primary btn-lg" disabled>
+            <i data-lucide="check-circle-2"></i> 查看診斷報告
+          </button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Pure Standalone Application JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
